@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Birhanu’s Question Banks</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#1b2235;--muted:#5d6682;--accent:#2f5bea;--accent2:#0f9d75;--border:#e1e5f0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1424;--card:#182038;--text:#eef1fa;--muted:#9aa4c4;--accent:#7f9bff;--accent2:#3ccf9f;--border:#2a3454}}
+:root[data-theme="dark"]{--bg:#0f1424;--card:#182038;--text:#eef1fa;--muted:#9aa4c4;--accent:#7f9bff;--accent2:#3ccf9f;--border:#2a3454}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+header{padding:40px 20px 24px;text-align:center}
+h1{margin:0 0 6px;font-size:1.8rem}
+header p{margin:0;color:var(--muted)}
+main{max-width:760px;margin:0 auto;padding:0 16px 40px}
+input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font-size:1rem;margin-bottom:18px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{display:block;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;text-decoration:none;color:inherit}
+a.card:hover{border-color:var(--accent)}
+.tag{display:inline-block;font-size:.75rem;padding:2px 9px;border-radius:99px;background:var(--accent);color:#fff;margin-bottom:8px}
+.tag.math{background:var(--accent2)}
+.card h2{margin:0 0 6px;font-size:1.15rem}
+.card p{margin:0 0 10px;color:var(--muted);font-size:.92rem}
+.go{color:var(--accent);font-weight:600;font-size:.92rem}
+.soon{opacity:.6;border-style:dashed}
+.soon .tag{background:var(--muted)}
+.empty{display:none;text-align:center;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:16px}
+</style>
+</head>
+<body>
+<header>
+<h1>📚 Question Banks</h1>
+<p>Interactive practice for Physics and Mathematics</p>
+</header>
+<main>
+<input id="q" type="search" placeholder="Search banks…" aria-label="Search banks">
+<div class="grid" id="grid">
+<a class="card" href="https://birhanu-27.github.io/G9-Phy-Question--Bank/" data-k="grade 9 physics units 1 2 true false multiple choice matching calculations">
+<span class="tag">Physics</span>
+<h2>Grade 9 Physics</h2>
+<span class="go">Open →</span>
+</a>
+<a class="card" href="https://birhanu-27.github.io/Grade10-math/" data-k="grade 10 mathematics math unit 1 functions relations polynomial">
+<span class="tag math">Mathematics</span>
+<h2>Grade 10 Mathematics</h2>
+<span class="go">Open →</span>
+</a>
+<div class="card soon" data-k="grade 11 physics coming soon">
+<span class="tag">Physics</span>
+<h2>Grade 11 Physics</h2>
+<p>Coming soon.</p>
+</div>
+<div class="card soon" data-k="grade 12 physics coming soon">
+<span class="tag">Physics</span>
+<h2>Grade 12 Physics</h2>
+<p>Coming soon.</p>
+</div>
+<a class="card" href="G10_Phy_Question_Bank.html" data-k="grade 10 physics">
+<span class="tag">Physics</span>
+<h2>Grade 10 Physics</h2>
+<span class="go">Open →</span>
+</a>
+</div>
+<p class="empty" id="empty">No banks match your search.</p>
+</main>
+<footer>Made by Birhanu · Ethiopia</footer>
+<script>
+var q=document.getElementById('q'),cards=document.querySelectorAll('#grid .card'),empty=document.getElementById('empty');
+q.addEventListener('input',function(){
+var s=q.value.toLowerCase().trim(),n=0;
+cards.forEach(function(c){
+var t=(c.textContent+' '+c.dataset.k).toLowerCase(),ok=!s||t.indexOf(s)>-1;
+c.style.display=ok?'':'none';if(ok)n++;
+});
+empty.style.display=n?'none':'block';
+});
+</script>
+</body>
+</html>
